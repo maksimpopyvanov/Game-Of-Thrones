@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import gotService from '../../services/gotService';
 
 const RandomBlock = styled.div`
     background-color: #fff;
@@ -19,27 +20,45 @@ const Term = styled.span`
 
 export default class RandomChar extends Component {
 
+    constructor() {
+        super();
+        this.updateChar();
+    }
+
+    gotService = new gotService();
+    state = {
+        char: {}
+    }
+
+    updateChar() {
+        const id = Math.floor(Math.random()*140 + 25); //25-140
+        this.gotService.getCharacter(id)
+            .then(char => this.setState({char}));
+    }
+
     render() {
+
+        const { char: {name, gender, born, died, culture} } = this.state;
 
         return (
             <RandomBlock className="rounded">
-                <RandomBlockTitle>Random Character: John</RandomBlockTitle>
+                <RandomBlockTitle>Random Character: {name}</RandomBlockTitle>
                 <ListGroup className="list-group-flush">
                     <ListGroupItem className="d-flex justify-content-between">
                         <Term>Gender </Term>
-                        <span>male</span>
+                        <span>{gender}</span>
                     </ListGroupItem>
                     <ListGroupItem className="d-flex justify-content-between">
                         <Term>Born </Term>
-                        <span>11.03.1039</span>
+                        <span>{born}</span>
                     </ListGroupItem>
                     <ListGroupItem className="d-flex justify-content-between">
                         <Term>Died </Term>
-                        <span>13.09.1089</span>
+                        <span>{died}</span>
                     </ListGroupItem>
                     <ListGroupItem className="d-flex justify-content-between">
                         <Term>Culture </Term>
-                        <span>Anarchy</span>
+                        <span>{culture}</span>
                     </ListGroupItem>
                 </ListGroup>
             </RandomBlock>
