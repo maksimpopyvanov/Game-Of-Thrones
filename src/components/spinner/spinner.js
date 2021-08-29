@@ -4,9 +4,9 @@ import './spinner.css';
 
 const Spinner = () => {
     return (
-        <div class="loadingio-spinner-spin-ss6zhkbod3l">
-            <div class="ldio-q95dz5rnlj">
-                <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+        <div class="loadingio-spinner-spin-5cakyr82ly">
+            <div class="ldio-lafzk4arob">
+                <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
             </div>
         </div>
     )

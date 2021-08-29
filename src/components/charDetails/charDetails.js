@@ -13,12 +13,6 @@ const CharDetailsTitle = styled.h4`
     text-align: center;
 `;
 
-/* const SelectError = styled.p`
-    color: #fff;
-    text-align: center;
-    font-size: 26px;
-`;
- */
 export default class CharDetails extends Component {
 
     render() {
