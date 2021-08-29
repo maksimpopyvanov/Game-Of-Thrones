@@ -16,6 +16,10 @@ const CharDetailsTitle = styled.h4`
     text-align: center;
 `;
 
+const Term = styled.span`
+    font-weight: bold;
+`;
+
 const StyledRequest = styled.span`
     color: white;
 `;
@@ -101,19 +105,19 @@ const View = ({char}) => {
             <CharDetailsTitle>{name || noData}</CharDetailsTitle>
             <ListGroup className="list-group-flush">
                 <ListGroupItem className="d-flex justify-content-between">
-                    <span className="term">Gender</span>
+                    <Term>Gender</Term>
                     <span>{gender || noData}</span>
                 </ListGroupItem>
                 <ListGroupItem className="d-flex justify-content-between">
-                    <span className="term">Born</span>
+                    <Term>Born</Term>
                     <span>{born || noData}</span>
                 </ListGroupItem>
                 <ListGroupItem className="d-flex justify-content-between">
-                    <span className="term">Died</span>
+                    <Term>Died</Term>
                     <span>{died || noData}</span>
                 </ListGroupItem>
                 <ListGroupItem className="d-flex justify-content-between">
-                    <span className="term">Culture</span>
+                    <Term>Culture</Term>
                     <span>{culture || noData}</span>
                 </ListGroupItem>
             </ListGroup>

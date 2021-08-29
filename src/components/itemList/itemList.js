@@ -30,7 +30,7 @@ export default class ItemList extends Component {
         return arr.map((item, i) => {
             return (
                 <StyledListGroupItem key = {item.url}
-                                     onClick={() => this.props.onSelectedChar(191 + i)}>
+                                     onClick={() => this.props.onSelectedChar(201 + i)}>
                     {item.name}
                 </StyledListGroupItem>
             )
