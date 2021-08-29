@@ -5,6 +5,7 @@ import RandomChar from '../randomChar';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
 import styled from 'styled-components';
+import ErrorMessage from '../errorMessage';
 
 const StyledButton = styled(Button)`
     margin-bottom: 20px;
@@ -13,7 +14,14 @@ const StyledButton = styled(Button)`
 export default class App extends Component {
 
     state = {
-        showRandomChar: false
+        showRandomChar: false,
+        selectedChar: null,
+        error: false
+    }
+
+    componentDidCatch() {
+        console.log('Error');
+        this.setState({error: true});
     }
 
     toggleRandomChar = () => {
@@ -24,8 +32,18 @@ export default class App extends Component {
         });
     }
 
+    onSelectedChar = (id) => {
+        this.setState({
+            selectedChar: id
+        });
+    }
+
     render() {
         const char = this.state.showRandomChar ? <RandomChar/> : null;
+
+        if(this.state.error) {
+            return <ErrorMessage/>
+        }
 
         return (
             <> 
@@ -41,10 +59,10 @@ export default class App extends Component {
                     </Row>
                     <Row>
                         <Col md='6'>
-                            <ItemList />
+                            <ItemList onSelectedChar={this.onSelectedChar}/>
                         </Col>
                         <Col md='6'>
-                            <CharDetails />
+                            <CharDetails charId={this.state.selectedChar}/>
                         </Col>
                     </Row>
                 </Container>

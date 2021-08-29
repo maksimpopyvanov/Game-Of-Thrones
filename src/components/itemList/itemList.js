@@ -27,9 +27,10 @@ export default class ItemList extends Component {
     }
 
     renderItems(arr) {
-        return arr.map((item) => {
+        return arr.map((item, i) => {
             return (
-                <StyledListGroupItem key = {item.url}>
+                <StyledListGroupItem key = {item.url}
+                                     onClick={() => this.props.onSelectedChar(191 + i)}>
                     {item.name}
                 </StyledListGroupItem>
             )
