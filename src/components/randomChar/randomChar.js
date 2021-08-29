@@ -8,7 +8,7 @@ import ErrorMessage from '../errorMessage';
 const RandomBlock = styled.div`
     background-color: #fff;
     padding: 25px 25px 15px 25px;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
 `;
 
 const RandomBlockTitle = styled.h4`
@@ -41,7 +41,7 @@ export default class RandomChar extends Component {
         });
     }
 
-    onError = (err) => {
+    onError = () => {
         this.setState({
             loading: false,
             error: true
@@ -49,7 +49,8 @@ export default class RandomChar extends Component {
     }
 
     updateChar() {
-        const id = Math.floor(Math.random()*140 + 25); //25-140
+        // const id = Math.floor(Math.random()*140 + 25); //25-140
+        const id = 1231231231;
         this.gotService.getCharacter(id)
             .then(this.onCharLoaded)
             .catch(this.onError);
