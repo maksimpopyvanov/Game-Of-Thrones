@@ -43,6 +43,7 @@ export default class GotService {
 
     _transformChar(char) {
         return {
+            url: char.url,
             name: char.name,
             gender: char.gender,
             born: char.born,

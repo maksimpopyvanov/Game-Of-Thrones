@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styled from 'styled-components'; 
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import GotService from '../../services';
+import Spinner from '../spinner';
 
 
 const StyledListGroupItem = styled(ListGroupItem)`
@@ -25,22 +26,30 @@ export default class ItemList extends Component {
             });
     }
 
+    renderItems(arr) {
+        return arr.map((item) => {
+            return (
+                <StyledListGroupItem key = {item.url}>
+                    {item.name}
+                </StyledListGroupItem>
+            )
+        });
+    }
+
 
     render() {
+        const {charList} = this.state;
+
+        if(!charList) {
+            return <Spinner/>
+        }
+
+        const items = this.renderItems(charList);
+
         return (
-             
             <ListGroup>
-                <StyledListGroupItem>
-                    John Snow
-                </StyledListGroupItem>
-                <StyledListGroupItem>
-                    Brandon Stark
-                </StyledListGroupItem>
-                <StyledListGroupItem>
-                    Geremy
-                </StyledListGroupItem>
+                {items}
             </ListGroup>
-            
         );
     }
 }
