@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'; 
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import GotService from '../../services';
+import { ListGroup, ListGroupItem } from 'reactstrap'
 import Spinner from '../spinner';
 
 
@@ -11,17 +10,16 @@ const StyledListGroupItem = styled(ListGroupItem)`
 
 export default class ItemList extends Component {
 
-    gotService = new GotService();
-
     state = {
-        charList: null
+        itemList: null
     }
 
     componentDidMount() {
-        this.gotService.getAllCharacters()
-            .then(charList => {
+        const {getData} = this.props;
+        getData()
+            .then(itemList => {
                 this.setState({
-                    charList
+                    itemList
                 })
             });
     }
@@ -39,13 +37,13 @@ export default class ItemList extends Component {
 
 
     render() {
-        const {charList} = this.state;
+        const {itemList} = this.state;
 
-        if(!charList) {
+        if(!itemList) {
             return <Spinner/>
         }
 
-        const items = this.renderItems(charList);
+        const items = this.renderItems(itemList);
 
         return (
             <ListGroup>

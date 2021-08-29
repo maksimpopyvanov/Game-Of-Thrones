@@ -3,6 +3,7 @@ import { Col, Row } from 'reactstrap';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
 import ErrorMessage from '../errorMessage';
+import GotService from '../../services';
 
 export default class CharacterPage extends Component {
 
@@ -10,6 +11,8 @@ export default class CharacterPage extends Component {
         selectedChar: null,
         error: false
     }
+
+    gotService = new GotService();
 
     componentDidCatch() {
         console.log('Error');
@@ -31,7 +34,8 @@ export default class CharacterPage extends Component {
         return (
             <Row>
                 <Col md='6'>
-                    <ItemList onSelectedChar={this.onSelectedChar}/>
+                    <ItemList onSelectedChar={this.onSelectedChar}
+                              getData={this.gotService.getAllCharacters}/>
                 </Col>
                 <Col md='6'>
                     <CharDetails charId={this.state.selectedChar}/>
