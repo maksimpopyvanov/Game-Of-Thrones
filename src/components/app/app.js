@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import {Col, Row, Container, Button} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import ItemList from '../itemList';
-import CharDetails from '../charDetails';
 import styled from 'styled-components';
 import ErrorMessage from '../errorMessage';
+import CharacterPage from '../characterPage';
 
 const StyledButton = styled(Button)`
     margin-bottom: 20px;
@@ -32,12 +31,6 @@ export default class App extends Component {
         });
     }
 
-    onSelectedChar = (id) => {
-        this.setState({
-            selectedChar: id
-        });
-    }
-
     render() {
         const char = this.state.showRandomChar ? <RandomChar/> : null;
 
@@ -57,14 +50,7 @@ export default class App extends Component {
                             <StyledButton onClick = {this.toggleRandomChar} color="primary">Toggle random character</StyledButton>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList onSelectedChar={this.onSelectedChar}/>
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails charId={this.state.selectedChar}/>
-                        </Col>
-                    </Row>
+                <CharacterPage/>
                 </Container>
             </>
         );
