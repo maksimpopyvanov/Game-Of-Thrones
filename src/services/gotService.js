@@ -8,7 +8,7 @@ export default class GotService {
         const res = await fetch(`${this._apiBase}${url}`);
         
         if(!res.ok) {
-            throw new Error(`Coul not fetch ${url}` + `, received ${res.status}`);
+            throw new Error(`Coul not fetch ${url}, received ${res.status}`);
         }
 
         return await res.json();
@@ -16,9 +16,8 @@ export default class GotService {
 
     async getAllCharacters() {
         const characters = await this.getResource(`/characters?page=20&pageSize=10`);
-        return characters.map(char => {
-            this._transformChar(char);
-        });
+        return characters.map(char => this._transformChar(char)
+        );
     }
 
     async getCharacter(id) {

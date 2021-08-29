@@ -36,7 +36,7 @@ export default class App extends Component {
                     <Row>
                         <Col lg={{size: 5, offset: 0}}>
                             {char}
-                            <StyledButton onClick = {this.toggleRandomChar} color="primary">toggle random character</StyledButton>
+                            <StyledButton onClick = {this.toggleRandomChar} color="primary">Toggle random character</StyledButton>
                         </Col>
                     </Row>
                     <Row>

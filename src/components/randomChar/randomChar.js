@@ -22,16 +22,15 @@ const Term = styled.span`
 
 export default class RandomChar extends Component {
 
-    constructor() {
-        super();
-        this.updateChar();
-    }
-
     gotService = new gotService();
     state = {
         char: {},
         loading: true,
         error: false
+    }
+
+    componentDidMount() {
+        this.updateChar();
     }
 
     onCharLoaded = (char) => {
@@ -72,26 +71,27 @@ export default class RandomChar extends Component {
 }
 
 const View = ({char}) => {
-    const {name, gender, born, died, culture} = char;
+    const {name, gender, born, died, culture} = char,
+          noData = "no data";
     return(
         <>
-            <RandomBlockTitle>Random Character: {name}</RandomBlockTitle>
+            <RandomBlockTitle>Random Character: {name || noData}</RandomBlockTitle>
                 <ListGroup className="list-group-flush">
                     <ListGroupItem className="d-flex justify-content-between">
                         <Term>Gender </Term>
-                        <span>{gender}</span>
+                        <span>{gender || noData}</span>
                     </ListGroupItem>
                     <ListGroupItem className="d-flex justify-content-between">
                         <Term>Born </Term>
-                        <span>{born}</span>
+                        <span>{born || noData}</span>
                     </ListGroupItem>
                     <ListGroupItem className="d-flex justify-content-between">
                         <Term>Died </Term>
-                        <span>{died}</span>
+                        <span>{died || noData}</span>
                     </ListGroupItem>
                     <ListGroupItem className="d-flex justify-content-between">
                         <Term>Culture </Term>
-                        <span>{culture}</span>
+                        <span>{culture || noData}</span>
                     </ListGroupItem>
                 </ListGroup>
         </>
