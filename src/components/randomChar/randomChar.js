@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import gotService from '../../services/gotService';
+import Spinner from '../spinner';
 
 const RandomBlock = styled.div`
     background-color: #fff;
@@ -27,18 +28,30 @@ export default class RandomChar extends Component {
 
     gotService = new gotService();
     state = {
-        char: {}
+        char: {},
+        loading: true
+    }
+
+    onCharLoaded = (char) => {
+        this.setState({
+            char,
+            loading: false
+        });
     }
 
     updateChar() {
         const id = Math.floor(Math.random()*140 + 25); //25-140
         this.gotService.getCharacter(id)
-            .then(char => this.setState({char}));
+            .then(this.onCharLoaded);
     }
 
     render() {
 
-        const { char: {name, gender, born, died, culture} } = this.state;
+        const { char: {name, gender, born, died, culture}, loading } = this.state;
+
+        if(loading) {
+            return <Spinner/>
+        }
 
         return (
             <RandomBlock className="rounded">
