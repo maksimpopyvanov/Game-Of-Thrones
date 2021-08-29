@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import gotService from '../../services/gotService';
+import GotService from '../../services';
 import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
 
@@ -22,7 +22,7 @@ const Term = styled.span`
 
 export default class RandomChar extends Component {
 
-    gotService = new gotService();
+    gotService = new GotService();
     state = {
         char: {},
         loading: true,
