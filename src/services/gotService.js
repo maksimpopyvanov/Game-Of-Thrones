@@ -42,8 +42,11 @@ export default class GotService {
     }
 
     _transformChar(char) {
+        const reg = /\d/,
+              url = char.url,
+              id = url.slice(url.search(reg));
         return {
-            url: char.url,
+            id: id,
             name: char.name,
             gender: char.gender,
             born: char.born,
