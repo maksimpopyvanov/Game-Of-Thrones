@@ -26,10 +26,11 @@ export default class ItemList extends Component {
 
     renderItems(arr) {
         return arr.map((item) => {
+            const label = this.props.renderItem(item);
             return (
                 <StyledListGroupItem key = {item.id}
-                                     onClick={() => this.props.onSelectedChar(item.id)}>
-                    {item.name}
+                                     onClick={() => this.props.onItemSelected(item.id)}>
+                    {label}
                 </StyledListGroupItem>
             )
         });
