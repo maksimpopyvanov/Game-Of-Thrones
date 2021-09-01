@@ -14,7 +14,6 @@ export default class App extends Component {
 
     state = {
         showRandomChar: false,
-        selectedChar: null,
         error: false
     }
 
