@@ -4,7 +4,9 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import styled from 'styled-components';
 import ErrorMessage from '../errorMessage';
-import CharacterPage from '../characterPage';
+import CharacterPage from '../pages/characterPage';
+import BooksPage from '../pages/booksPage';
+import HousesPage from '../pages/housesPage';
 
 const StyledButton = styled(Button)`
     margin-bottom: 20px;

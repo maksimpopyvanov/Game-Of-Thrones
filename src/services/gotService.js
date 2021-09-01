@@ -26,19 +26,23 @@ export default class GotService {
     }
 
     getAllBooks = async () => {
-        return this.getResource(`/books`);
+        const books = await this.getResource(`/books`);
+        return books.map(book => this._transformBook(book));
     }
 
     getBook = async (id) => {
-        return this.getResource(`/books/${id}`);
+        const book = await this.getResource(`/books/${id}`);
+        return this._transformBook(book);
     }
 
     getAllHouses = async () => {
-        return this.getResource(`/houses`);
+        const houses = await this.getResource(`/houses`);
+        return houses.map(house => this._transformHouse(house));
     }
 
     getHouse = async (id) => {
-        return this.getResource(`/houses/${id}`);
+        const house = await this.getResource(`/houses/${id}`);
+        return this._transformHouse(house);
     }
 
     _transformChar(char) {
@@ -52,6 +56,31 @@ export default class GotService {
             born: char.born,
             died: char.died,
             culture: char.culture
+        }
+    }
+
+    _transformBook(book) {
+        const reg = /\d/,
+              url = book.url,
+              id = url.slice(url.search(reg));
+        return {
+            name: book.name,
+            id: id,
+            authors: book.authors,
+            publisher: book.publisher,
+            country: book.country
+        }
+    }
+
+    _transformHouse(house) {
+        const reg = /\d/,
+              url = house.url,
+              id = url.slice(url.search(reg));
+        return {
+            name: house.name,
+            id: id,
+            region: house.region,
+            words: house.words
         }
     }
 }
