@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderBlock = styled.div`
@@ -33,19 +34,19 @@ const Header = () => {
     return (
         <HeaderBlock>
             <HeaderTitle>
-                <a href="#">
+                <Link to='/'>
                 Game of Thrones DB
-                </a>
+                </Link>
             </HeaderTitle>
             <HeaderLinks>
                 <HeaderLinksItem>
-                    <a href="#">Characters</a>
+                    <Link to='/characters/'>Characters</Link>
                 </HeaderLinksItem>
                 <HeaderLinksItem>
-                    <a href="#">Houses</a>
+                <Link to='/houses/'>Houses</Link>
                 </HeaderLinksItem>
                 <HeaderLinksItem>
-                    <a href="#">Books</a>   
+                    <Link to='/books/'>Books</Link>  
                 </HeaderLinksItem>
             </HeaderLinks>
         </HeaderBlock>

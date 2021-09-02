@@ -28,8 +28,9 @@ export default class ItemList extends Component {
         return arr.map((item) => {
             const label = this.props.renderItem(item);
             return (
-                <StyledListGroupItem key = {item.id}
-                                     onClick={() => this.props.onItemSelected(item.id)}>
+                <StyledListGroupItem
+                key = {item.id}
+                onClick={() => this.props.onItemSelected(item.id)}>
                     {label}
                 </StyledListGroupItem>
             )

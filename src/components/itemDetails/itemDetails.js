@@ -127,7 +127,6 @@ export default class ItemDetails extends Component {
 
 const View = ({item, children}) => {
     const {name} = item;
-
     return(
         <>
             <ItemDetailsTitle>{name || "noData"}</ItemDetailsTitle>

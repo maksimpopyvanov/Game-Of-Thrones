@@ -1,2 +1,7 @@
-import HousesPage from "./housesPage";
-export default HousesPage;
+import HousesItem from "./housesItem"
+import HousesPage from "./housesPage"
+
+export {
+    HousesItem,
+    HousesPage
+}

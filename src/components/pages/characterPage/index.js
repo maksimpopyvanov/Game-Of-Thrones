@@ -1,2 +1,7 @@
-import CharacterPage from "./characterPage";
-export default CharacterPage;
+import CharactersItem from "./charactersItem"
+import CharactersPage from "./charactersPage"
+
+export {
+    CharactersItem,
+    CharactersPage
+}

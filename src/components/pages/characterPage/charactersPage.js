@@ -4,7 +4,7 @@ import ErrorMessage from '../../errorMessage';
 import GotService from '../../../services';
 import {withRouter} from 'react-router-dom';
 
-class HousesPage extends Component {
+class CharactersPage extends Component {
 
     state = {
         error: false
@@ -27,10 +27,10 @@ class HousesPage extends Component {
             <ItemList onItemSelected={(itemID) => {
                 this.props.history.push(itemID);
             }}
-            getData={this.gotService.getAllHouses}
-            renderItem = { ({name}) => `${name}`}/>
+            getData={this.gotService.getAllCharacters}
+            renderItem = { ({name, gender}) => `${name} (${gender})`}/>
         )
     }
 }
 
-export default withRouter(HousesPage);
+export default withRouter(CharactersPage);
